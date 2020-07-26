@@ -11,14 +11,7 @@ import Forms from './components/Forms.jsx'
 import Recipes from './components/Recipes.jsx'
 import Login from './components/Login'
 
-let baseURL
-
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3003';
-} else {
-  // "https://fathomless-sierra-68956.herokuapp.com" in this case is the *API* url
-  baseURL = 'https://forkitbackend.herokuapp.com/';
-}
+let baseURL=process.env.BASEURL
 
 class App extends React.Component {
   state = {
