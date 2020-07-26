@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0;
+  padding: 0;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  color: #202020;
+  background-color: #fbfbfb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("./assets/Fork5.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: cover;
+}
+
+.card .badge {
+  font-size: 16px;
+}
+
+.card .text-secondary {
+  line-height: 25px;
+}
+/*# sourceMappingURL=App.css.map */
