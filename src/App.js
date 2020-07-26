@@ -46,16 +46,16 @@ class App extends React.Component {
     //});
   }
 
-  componentDidMount() {
-    fetch(baseURL).then(res => {
-      return res.json();
-    }).then(data => {
-      console.log(data)
-      this.setState({
-        userName: data
-      })
-    });
-  }
+  // componentDidMount() {
+  //   fetch(baseURL).then(res => {
+  //     return res.json();
+  //   }).then(data => {
+  //     console.log(data)
+  //     this.setState({
+  //       userName: data
+  //     })
+  //   });
+  // }
   render() {
     return (
       <Container fluid>
