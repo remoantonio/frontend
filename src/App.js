@@ -9,7 +9,8 @@ import SearchRecipes from './components/SearchRecipes'
 import SavedRecipes from './components/SavedRecipes'
 import Forms from './components/Forms.jsx'
 import Recipes from './components/Recipes.jsx'
-import Login from './components/Login'
+import Login from './components/Login.jsx'
+import Show from './components/Show.jsx'
 require('dotenv').config()
 
 let baseURL= 'https://forkitbackend.herokuapp.com/'
