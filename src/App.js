@@ -10,8 +10,9 @@ import SavedRecipes from './components/SavedRecipes'
 import Forms from './components/Forms.jsx'
 import Recipes from './components/Recipes.jsx'
 import Login from './components/Login'
+require('dotenv').config()
 
-let baseURL=process.env.BASEURL
+let baseURL=process.env.BASE_URL
 
 class App extends React.Component {
   state = {

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Form, Button, Container} from 'react-bootstrap'
+require('dotenv').config()
 
 class Forms extends React.Component {
 
@@ -21,7 +22,7 @@ class Forms extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(this.props.baseURL + '/user/new', {
+    fetch(process.env.BASE_URL + '/user/new', {
       method: 'POST',
       body: JSON.stringify({
         userName: this.state.userName,
