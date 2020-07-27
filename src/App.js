@@ -12,7 +12,7 @@ import Recipes from './components/Recipes.jsx'
 import Login from './components/Login'
 require('dotenv').config()
 
-let baseURL=process.env.BASE_URL
+let baseURL= 'https://forkitbackend.herokuapp.com/'
 
 class App extends React.Component {
   state = {
@@ -47,16 +47,17 @@ class App extends React.Component {
     //});
   }
 
-  // componentDidMount() {
-  //   fetch(baseURL).then(res => {
-  //     return res.json();
-  //   }).then(data => {
-  //     console.log(data)
-  //     this.setState({
-  //       userName: data
-  //     })
-  //   });
-  // }
+  componentDidMount() {
+    fetch(baseURL + 'current').then(res => {
+      return res.json();
+    }).then(data => {
+      console.log(data)
+      this.setState({
+        userName: data
+      })
+    });
+  }
+
   render() {
     return (
       <Container fluid>
