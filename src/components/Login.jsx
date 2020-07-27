@@ -8,7 +8,7 @@ export default function Login(props) {
     return (
         <Container fluid>
             <h1>Login/Sign Up</h1>
-            <Forms setUser={props.setUser} baseURL={props.baseURL} />
+            <Forms setUser={props.setUser} />
         </Container>
     )
 

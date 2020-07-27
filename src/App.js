@@ -12,7 +12,7 @@ import Recipes from './components/Recipes.jsx'
 import Login from './components/Login'
 require('dotenv').config()
 
-let baseURL= "http://localhost:3003"
+let baseURL= 'https://forkitbackend.herokuapp.com/'
 
 class App extends React.Component {
   state = {
@@ -34,11 +34,11 @@ class App extends React.Component {
 
   setUser(data) {
     this.setState({
-      userName : data
+      userName: data
     })
     console.log(data)
-    localStorage.setItem('currentUser',data.userName)
-    localStorage.setItem('token',data.accessToken)
+    localStorage.setItem('currentUser', data.userName)
+    localStorage.setItem('token', data.accessToken)
     // create localStorage.token
   }
 
@@ -73,11 +73,11 @@ class App extends React.Component {
           <Route
             exact path='/login'
             render={(props) => (
-              <Login {...props} setUser={this.setUser} baseURL = {baseURL} />
+              <Login {...props} setUser={this.setUser} />
             )} />
+          <Route exact path='/show' component={Show} />
           <Route component={Error} />
         </Switch>
-
 
 
         {/* <table>
