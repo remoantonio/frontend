@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Container, Button } from 'react-bootstrap'
+import {Container, Button, Jumbotron } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Home() {
