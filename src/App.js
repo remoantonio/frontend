@@ -12,7 +12,7 @@ import Recipes from './components/Recipes.jsx'
 import Login from './components/Login'
 require('dotenv').config()
 
-let baseURL= 'https://forkitbackend.herokuapp.com/'
+let baseURL= "http://localhost:3003"
 
 class App extends React.Component {
   state = {
@@ -20,22 +20,26 @@ class App extends React.Component {
   }
   setUser = this.setUser.bind(this)
 
-  getRecipes = () => {
-    fetch(baseURL + '/fork').then(res => {
-      return res.json();
-    }).then(data => {
-      this.setState({
-        userName: data.userName,
-        password: data.password,
-        password2: data.password2,
-      });
-    });
-  }
+  // getRecipes = () => {
+  //   fetch(baseURL + '/fork').then(res => {
+  //     return res.json();
+  //   }).then(data => {
+  //     this.setState({
+  //       userName: data.userName,
+  //       password: data.password,
+  //       password2: data.password2,
+  //     });
+  //   });
+  // }
 
   setUser(data) {
     this.setState({
       userName : data
     })
+    console.log(data)
+    localStorage.setItem('currentUser',data.userName)
+    localStorage.setItem('token',data.accessToken)
+    // create localStorage.token
   }
 
   addRecipes = (newRecipes) => {
@@ -47,16 +51,16 @@ class App extends React.Component {
     //});
   }
 
-  componentDidMount() {
-    fetch(baseURL + 'current').then(res => {
-      return res.json();
-    }).then(data => {
-      console.log(data)
-      this.setState({
-        userName: data
-      })
-    });
-  }
+  // componentDidMount() {
+  //   fetch(baseURL + 'current').then(res => {
+  //     return res.json();
+  //   }).then(data => {
+  //     console.log(data)
+  //     this.setState({
+  //       userName: data
+  //     })
+  //   });
+  // }
 
   render() {
     return (

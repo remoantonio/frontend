@@ -22,7 +22,7 @@ class Forms extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://forkitbackend.herokuapp.com' + '/user/new', {
+    fetch("http://localhost:3003" + '/user/new', {
       method: 'POST',
       body: JSON.stringify({
         userName: this.state.userName,
