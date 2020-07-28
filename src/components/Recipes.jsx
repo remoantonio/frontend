@@ -80,7 +80,7 @@ class Recipes extends Component {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3003/fork/add", requestOptions)
+    fetch("https://forkitbackend.herokuapp.com/fork/add", requestOptions)
       .then(response => response.text())
       .then(result => console.log('here',result))
       .catch(error => console.log('error', error));

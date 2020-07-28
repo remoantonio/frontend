@@ -14,8 +14,8 @@ import Login2 from './components/Login2'
 import Show from './components/Show.jsx'
 require('dotenv').config()
 
-let baseURL= 'http://localhost:3003'
-// let baseURL= 'https://forkitbackend.herokuapp.com/'
+// let baseURL= 'http://localhost:3003'
+let baseURL= 'https://forkitbackend.herokuapp.com/'
 
 class App extends React.Component {
   state = {

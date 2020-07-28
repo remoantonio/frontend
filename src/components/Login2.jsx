@@ -21,7 +21,7 @@ export default class Login2 extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3003/' + 'user/login', {
+    fetch('https://forkitbackend.herokuapp.com/' + 'user/login', {
       method: 'POST',
       body: JSON.stringify({
         userName: this.state.userName,
