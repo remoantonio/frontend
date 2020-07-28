@@ -20,7 +20,7 @@ export default class SavedRecipes extends Component {
       redirect: 'follow'
     };
 
-    fetch("https://forkitbackend.herokuapp.com/fork/savedRecipes", requestOptions)
+    fetch(process.env.REACT_APP_BASE_URL + "/fork/savedRecipes", requestOptions)
       .then(response => response.text())
       .then(result => 
         this.setState({
