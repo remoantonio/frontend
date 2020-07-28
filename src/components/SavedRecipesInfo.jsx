@@ -17,19 +17,19 @@ class SavedRecipesInfo extends Component {
           </div>
           <Card.Text className="text-secondary">Yields: {this.props.recipe.yield} </Card.Text>
           <Card.Text className="text-secondary">Calories :{Math.floor(this.props.recipe.calories)}</Card.Text>
-          {/* <Button
-            className="mt-auto font-weight-bold"
-            variant="warning"
-            block
-            onClick = {() => this.props.renderShow}
-          >
-            Show More
-          </Button> */}
           <Button
             className="mt-auto font-weight-bold"
             variant="warning"
             block
-            onClick = {() => this.props.addRecipe(this.props.id)}
+            href={'/showSaved/' + this.props.id}
+          >
+            Show More
+          </Button>
+          <Button
+            className="mt-auto font-weight-bold"
+            variant="warning"
+            block
+            onClick={() => this.props.addRecipe(this.props.id)}
           >
             Fork_it
           </Button>

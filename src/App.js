@@ -12,6 +12,7 @@ import Recipes from './components/Recipes.jsx'
 import Login from './components/Login.jsx'
 import Login2 from './components/Login2'
 import Show from './components/Show.jsx'
+import ShowUser from './components/ShowUser.jsx'
 
 let baseURL= process.env.REACT_APP_BASE_URL
 
@@ -29,7 +30,7 @@ class App extends React.Component {
     localStorage.setItem('currentUser', data.userName)
     localStorage.setItem('token', data.accessToken)
   }
-
+  
   addRecipes = (newRecipes) => {
   }
 
@@ -51,7 +52,8 @@ class App extends React.Component {
             render={(props) => (
               <Login2 {...props} setUser={this.setUser} />
             )} />
-          <Route exact path='/show' component={Show} />
+          <Route exact path='/show/:id' component={Show} />
+          <Route exact path='/showSaved/:id' component={ShowUser} />
           <Route component={Error} />
         </Switch>
       </Container>

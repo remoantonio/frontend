@@ -6,7 +6,7 @@ import Show from './Show.jsx'
 
 
 class RecipeInfo extends Component {
-  
+
   render() {
     return (
       <Card style={{ width: '18rem' }} className="h-100 shadow-sm bg-white rounded">
@@ -21,7 +21,7 @@ class RecipeInfo extends Component {
             className="mt-auto font-weight-bold"
             variant="warning"
             block
-            href='/show'
+            href = {'/show/' + this.props.id}
           >
             Show More
           </Button>
@@ -29,7 +29,7 @@ class RecipeInfo extends Component {
             className="mt-auto font-weight-bold"
             variant="warning"
             block
-            onClick = {() => this.props.addRecipe(this.props.id)}
+            onClick={() => this.props.addRecipe(this.props.id)}
           >
             Fork_it
           </Button>

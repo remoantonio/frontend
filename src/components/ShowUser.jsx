@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import RecipeInfo from './RecipeInfo.jsx'
 import {Card, Button, Container} from 'react-bootstrap'
 
-export default class Show extends Component {
+export default class ShowUser extends Component {
+  state = {
+    recipeInfo : ''
+  }
+
   state = {
     recipeInfo : JSON.parse(localStorage.getItem('searchResult'))[this.props.match.params.id].recipe
   }
@@ -40,6 +44,27 @@ export default class Show extends Component {
     fetch(process.env.REACT_APP_BASE_URL + "/fork/add", requestOptions)
       .then(response => response.text())
       .then(result => console.log('here',result))
+      .catch(error => console.log('error', error));
+  }
+
+  componentDidMount() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.getItem('token'));
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    fetch(process.env.REACT_APP_BASE_URL + "/fork/savedRecipes", requestOptions)
+      .then(response => response.text())
+      .then(result => 
+        this.setState({
+          recipeInfo: JSON.parse(result)[this.props.match.params.id]
+        })
+      )
       .catch(error => console.log('error', error));
   }
 

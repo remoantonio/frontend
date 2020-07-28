@@ -57,7 +57,7 @@ class Recipes extends Component {
         calories : Math.floor(this.state.recipe[id].recipe.calories),
         dietLabels : this.state.recipe[id].recipe.dietLabels,
         image : this.state.recipe[id].recipe.image,
-        ingredientLines : this.state.recipe[id].recipe.ingredientLines,
+        ingredients : this.state.recipe[id].recipe.ingredients,
         label : this.state.recipe[id].recipe.label,
         url : this.state.recipe[id].recipe.url,
         yield : this.state.recipe[id].recipe.yield,
@@ -121,7 +121,7 @@ class Recipes extends Component {
             {this.state.recipe.map((recipe, index) => {
               return (
                 <Col md='auto' className="mb-5">
-                  <RecipeInfo recipe={recipe.recipe} id={index} addRecipe={this.addRecipe} />
+                  <RecipeInfo recipe={recipe.recipe} id={index} addRecipe={this.addRecipe} showPage={this.showPage} />
                 </Col>
               )
             })}
