@@ -17,7 +17,6 @@ class Recipes extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.addRecipe = this.addRecipe.bind(this)
-    this.renderShow = this.renderShow.bind(this)
     this.saveSearch = this.saveSearch.bind(this)
   }
 
