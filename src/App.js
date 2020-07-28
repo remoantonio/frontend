@@ -13,25 +13,14 @@ import Login from './components/Login.jsx'
 import Show from './components/Show.jsx'
 require('dotenv').config()
 
-let baseURL= 'https://forkitbackend.herokuapp.com/'
+let baseURL= 'http://localhost:3003'
+// let baseURL= 'https://forkitbackend.herokuapp.com/'
 
 class App extends React.Component {
   state = {
     userName: ''
   }
   setUser = this.setUser.bind(this)
-
-  // getRecipes = () => {
-  //   fetch(baseURL + '/fork').then(res => {
-  //     return res.json();
-  //   }).then(data => {
-  //     this.setState({
-  //       userName: data.userName,
-  //       password: data.password,
-  //       password2: data.password2,
-  //     });
-  //   });
-  // }
 
   setUser(data) {
     this.setState({
@@ -40,28 +29,10 @@ class App extends React.Component {
     console.log(data)
     localStorage.setItem('currentUser', data.userName)
     localStorage.setItem('token', data.accessToken)
-    // create localStorage.token
   }
 
   addRecipes = (newRecipes) => {
-    // const copyRecipes = [...this.state.recipes];
-    // copyRecipes.push(newRecipes);
-    // this.setState({
-    //   recipes: copyRecipes,
-
-    //});
   }
-
-  // componentDidMount() {
-  //   fetch(baseURL + 'current').then(res => {
-  //     return res.json();
-  //   }).then(data => {
-  //     console.log(data)
-  //     this.setState({
-  //       userName: data
-  //     })
-  //   });
-  // }
 
   render() {
     return (

@@ -43,14 +43,37 @@ class Recipes extends Component {
   }
 
   addRecipe (id) {
-    console.log(this.state.recipe[id].recipe)
-    // fetch('https://forkitbackend.herokuapp.com/fork/add', {
-    //   method: 'PUT',
-    //   body: JSON.stringify({
-    //     userName : localStorage.getItem('currentUser'),
-    //     recipe: this.state.recipe[event.target.id]
-    //   })
-    // })
+    let shortRecipe = {
+        calories : Math.floor(this.state.recipe[id].recipe.calories),
+        dietLabels : this.state.recipe[id].recipe.dietLabels,
+        image : this.state.recipe[id].recipe.image,
+        ingredientLines : this.state.recipe[id].recipe.ingredientLines,
+        label : this.state.recipe[id].recipe.label,
+        url : this.state.recipe[id].recipe.url,
+        yield : this.state.recipe[id].recipe.yield,
+        healthLabels : this.state.recipe[id].recipe.healthLabels,
+    }
+    // console.log(shortRecipe)
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.getItem('token'));
+    myHeaders.append("Content-Type", "application/json");
+    
+    var raw = JSON.stringify({
+      userName : localStorage.getItem('currentUser'),
+      recipe: shortRecipe
+    });
+    
+    var requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3003/fork/add", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log('here',result))
+      .catch(error => console.log('error', error));
   }
 
   renderShow(id) {
@@ -83,7 +106,7 @@ class Recipes extends Component {
             {this.state.recipe.map((recipe, index) => {
               return (
                 <Col md='auto' className="mb-5">
-                  <RecipeInfo recipe={recipe.recipe} id={index} />
+                  <RecipeInfo recipe={recipe.recipe} id={index} addRecipe={this.addRecipe} />
                 </Col>
               )
             })}

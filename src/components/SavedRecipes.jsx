@@ -1,28 +1,49 @@
-import React, { Component } from 'react'
-import {Card, Button} from 'react-bootstrap'
+import React, { Component } from 'react';
+import RecipeInfo from './RecipeInfo'
+import { Card, Button, Container, Form, Col, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import SavedRecipesInfo from './SavedRecipesInfo.jsx'
 
-
-
-export default function SavedRecipes({ data, setOrdered }) {
-    return (
-      <Card className="h-100 shadow-sm bg-white rounded">
-        <Card.Img variant="top" src={data.image} />
-        <Card.Body className="d-flex flex-column">
-          <div className="d-flex mb-2 justify-content-between">
-            <Card.Title className="mb-0 font-weight-bold">{data.label}</Card.Title>
-          </div>
-          <Card.Text className="text-secondary">{data.yield}</Card.Text>
-          <Button
-            onClick={() => setOrdered()}
-            className="mt-auto font-weight-bold"
-            variant="success"
-            block
-          >
-            Show More
-          </Button>
-        </Card.Body>
-      </Card>
-    );
+export default class SavedRecipes extends Component {
+  state = {
+    recipe: ""
   }
-  
+
+  componentDidMount() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + localStorage.getItem('token'));
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:3003/fork/savedRecipes", requestOptions)
+      .then(response => response.text())
+      .then(result => 
+        this.setState({
+          recipe: JSON.parse(result)
+        })
+      )
+      .catch(error => console.log('error', error));
+  }
+  render() {
+    return (
+      <>
+        {this.state.recipe ? (
+          <Row >
+            {/* {console.log(this.state.recipe)} */}
+            {this.state.recipe.map((recipe, index) => {
+              return (
+                <Col md='auto' className="mb-5">
+                  <SavedRecipesInfo recipe={recipe} id={index} addRecipe={this.addRecipe} />
+                </Col>
+              )
+            })}
+          </Row>) : (<></>)}
+      </>
+    )
+  }
+}
