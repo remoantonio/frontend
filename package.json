@@ -1,6 +1,21 @@
 {
   "name": "fork_it",
   "version": "0.1.0",
+  "babel": {
+    "presets": [
+      "react-native",
+      "react-native-dotenv"
+    ]
+  },
+  "plugins": [
+    [
+      "module:react-native-dotenv",
+      {
+        "moduleName": "env",
+        "path": "./.env"
+      }
+    ]
+  ],
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -8,6 +23,7 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
+    "metro-react-native-babel-preset": "^0.61.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",

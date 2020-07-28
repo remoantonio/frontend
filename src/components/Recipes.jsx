@@ -3,14 +3,15 @@ import RecipeInfo from './RecipeInfo'
 import { Card, Button, Container, Form, Col, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Show from './Show.jsx'
-import {APP_ID, APP_KEY} from "@env"
+// import {APP_ID, APP_KEY} from "@env"
 
 let holder = []
 class Recipes extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      baseURL: 'https://api.edamam.com/search?app_id=' + APP_ID + '&app_key=' + APP_KEY + '&q=',
+      baseURL: 'https://api.edamam.com/search?app_id=c180e9f7&app_key=15b9007e988ab8d62a093bbfa45635bb&q=',
+      // baseURL: 'https://api.edamam.com/search?app_id=' + APP_ID + '&app_key=' + APP_KEY + '&q=',
       recipeName: '',
       searchURL: ''
     }
