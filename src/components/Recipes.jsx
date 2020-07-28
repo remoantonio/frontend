@@ -3,14 +3,14 @@ import RecipeInfo from './RecipeInfo'
 import { Card, Button, Container, Form, Col, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Show from './Show.jsx'
-require('dotenv').config()
+import {APP_ID, APP_KEY} from "@env"
 
 let holder = []
 class Recipes extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      baseURL: 'https://api.edamam.com/search?app_id=' + process.env.APP_ID + '&app_key=' + process.env.APP_KEY + '&q=',
+      baseURL: 'https://api.edamam.com/search?app_id=' + APP_ID + '&app_key=' + APP_KEY + '&q=',
       recipeName: '',
       searchURL: ''
     }

@@ -12,7 +12,6 @@ import Recipes from './components/Recipes.jsx'
 import Login from './components/Login.jsx'
 import Login2 from './components/Login2'
 import Show from './components/Show.jsx'
-require('dotenv').config()
 
 // let baseURL= 'http://localhost:3003'
 let baseURL= 'https://forkitbackend.herokuapp.com/'
