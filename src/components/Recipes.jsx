@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RecipeInfo from './RecipeInfo'
 import { Card, Button, Container, Form, Col, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Show from './Show.jsx'
 
 class Recipes extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class Recipes extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.addRecipe = this.addRecipe.bind(this)
+    this.renderShow = this.renderShow.bind(this)
   }
 
   handleChange(event) {
@@ -39,11 +42,26 @@ class Recipes extends Component {
     }
   }
 
+  addRecipe (id) {
+    console.log(this.state.recipe[id].recipe)
+    // fetch('https://forkitbackend.herokuapp.com/fork/add', {
+    //   method: 'PUT',
+    //   body: JSON.stringify({
+    //     userName : localStorage.getItem('currentUser'),
+    //     recipe: this.state.recipe[event.target.id]
+    //   })
+    // })
+  }
+
+  renderShow(id) {
+    return <Show recipe={this.state.recipe[id].recipe} />
+  }
+
 
   render() {
     return (
       <>
-        <Form>
+        <Form className='w-50 p-3'>
           <Form.Label htmlFor='recipeName'>Recipe</Form.Label>
           <Form.Control
             id='recipeName'
@@ -52,20 +70,21 @@ class Recipes extends Component {
             value={this.state.recipeName}
             onChange={this.handleChange}
           />
-          <Button type='submit' onClick={(event) => this.handleSubmit(event)}>
+          <Button variant='warning' type='submit' onClick={(event) => this.handleSubmit(event)}>
             Find Recipe</Button>
         </Form>
 
+
         {this.state.recipe ? (
-          <Row>
+          <Row >
             {this.state.recipe.map((recipe, index) => {
               return (
-                <Col xs={3} className="mb-5">
+                <Col md='auto' className="mb-5">
                   <RecipeInfo recipe={recipe.recipe} id={index} />
                 </Col>
               )
             })}
-          </Row>) : (<></>)}
+          </Row>) : (<></>)} 
       </>
     )
   }

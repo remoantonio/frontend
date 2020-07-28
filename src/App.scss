@@ -1,18 +1,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+// $queen-pink: #E1BDC7ff;
+// $vegas-gold: #E0C172ff;
+// $coyote-brown: #8A6437ff;
+// $vegas-gold-2: #E0C172ff;
+// $coyote-brown-2: #8A6437ff;
 
-// html {
-//     -webkit-box-sizing: border-box;
-//             box-sizing: border-box;
-//   }
-//   *, *:before, *:after {
-//     -webkit-box-sizing: inherit;
-//             box-sizing: inherit;
-//   }
+html {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+  }
   
   body {
-    display: flex; 
+    
     margin: 20px 0;
     padding: 0;
     line-height: 1;
@@ -37,4 +42,4 @@
     line-height: 25px;
   }
  
-  
+

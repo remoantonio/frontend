@@ -79,21 +79,6 @@ class App extends React.Component {
           <Route exact path='/show' component={Show} />
           <Route component={Error} />
         </Switch>
-
-
-        {/* <table>
-          <tbody>
-            {
-              this.state.recipes.map(recipes => {
-                return (
-                  <tr key={ recipes._id }>
-                    <td>{ recipes.name }</td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table> */}
       </Container>
     )
   }
