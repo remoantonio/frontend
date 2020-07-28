@@ -56,7 +56,26 @@ class App extends React.Component {
 }
 
 
+// Researched on stackOverflow for a way to clear search parameters
+// https://stackoverflow.com/questions/39128931/clear-localstorage-on-tab-browser-close-but-not-on-refresh
+window.onbeforeunload = function (e) {
 
+  window.localStorage.unloadTime = JSON.stringify(new Date());
+  
+  };
+  
+  window.onload = function () {
+  
+  let loadTime = new Date();
+  let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
+  let refreshTime = loadTime.getTime() - unloadTime.getTime();
+  
+  if(refreshTime>3000)//3000 milliseconds
+  {
+  window.localStorage.clear();
+  }
+  
+  };
 
 
 

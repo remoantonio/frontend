@@ -4,6 +4,7 @@ import { Card, Button, Container, Form, Col, Row } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Show from './Show.jsx'
 
+let holder = []
 class Recipes extends Component {
   constructor(props) {
     super(props)
@@ -17,28 +18,38 @@ class Recipes extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.addRecipe = this.addRecipe.bind(this)
     this.renderShow = this.renderShow.bind(this)
+    this.saveSearch = this.saveSearch.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value })
-  }
+    this.setState({ [event.target.id]: event.target.value })}
+
   handleSubmit(event) {
     event.preventDefault()
+    localStorage.removeItem('searchResult')
+    holder = []
     this.setState({
       searchURL: this.state.baseURL + this.state.recipeName
     }, () => {
       fetch(this.state.searchURL)
         .then(response => {
           return response.json()
-        }).then(json => this.setState({
-          recipe: json.hits,
-          // recipe: json,
-          recipeTitle: ''
-        }),
-          err => console.log(err))
+        }).then(json => (
+          this.setState({
+            recipe: json.hits,
+            recipeTitle: ''
+          }), this.saveSearch()
+        ), err => console.log(err)
+        )
     })
-    {
-      this.props.toggleSearch()
+    { this.props.toggleSearch() }
+  }
+
+  saveSearch() {
+    console.log(this.state.recipe)
+    for (let i = 0; i < this.state.recipe.length; i++) {
+      holder.push(this.state.recipe[i])
+      localStorage.setItem('searchResult', JSON.stringify(holder))
     }
   }
 
@@ -76,10 +87,14 @@ class Recipes extends Component {
       .catch(error => console.log('error', error));
   }
 
-  renderShow(id) {
-    return <Show recipe={this.state.recipe[id].recipe} />
+  componentDidMount() {
+    console.log(localStorage.getItem('searchResult'))
+    if (localStorage.getItem('searchResult')) {
+      this.setState({
+        recipe: JSON.parse(localStorage.getItem('searchResult'))
+      })
+    }
   }
-
 
   render() {
     return (
@@ -99,6 +114,7 @@ class Recipes extends Component {
           <Button variant='warning' type='submit' onClick={(event) => this.handleSubmit(event)}>
             Find Recipe</Button>
         </Form>
+        <br/>
 
 
         {this.state.recipe ? (

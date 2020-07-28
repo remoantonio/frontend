@@ -17,14 +17,14 @@ class RecipeInfo extends Component {
           </div>
           <Card.Text className="text-secondary">Yields: {this.props.recipe.yield} </Card.Text>
           <Card.Text className="text-secondary">Calories :{Math.floor(this.props.recipe.calories)}</Card.Text>
-          {/* <Button
+          <Button
             className="mt-auto font-weight-bold"
             variant="warning"
             block
-            onClick = {() => this.props.renderShow}
+            href='/show'
           >
             Show More
-          </Button> */}
+          </Button>
           <Button
             className="mt-auto font-weight-bold"
             variant="warning"
