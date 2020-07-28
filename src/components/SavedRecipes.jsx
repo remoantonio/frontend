@@ -19,7 +19,6 @@ export default class SavedRecipes extends Component {
       headers: myHeaders,
       redirect: 'follow'
     };
-    
 
     fetch(process.env.REACT_APP_BASE_URL + "/fork/savedRecipes", requestOptions)
       .then(response => response.text())
